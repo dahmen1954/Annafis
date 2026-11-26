@@ -9,6 +9,8 @@
   <meta property="og:description" content="Conçu par Dr MIMOUN Abderrahmane : dossiers patients, ordonnances A4/A5 et réseau local Médecin / Assistante dans le strict respect du secret médical.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dahmen1954.github.io/Annafis/">
+  <link rel="icon" type="image/png" href="Logo_Annafis.png">
+  <meta property="og:image" content="https://dahmen1954.github.io/Annafis/Logo_Annafis.png">
   <style>
     :root {
       --teal: #005A5B;
@@ -32,13 +34,24 @@
     header {
       background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
       color: #FFFFFF;
-      padding: 50px 20px 44px;
+      padding: 46px 20px 44px;
       text-align: center;
     }
     .container {
       max-width: 960px;
       margin: 0 auto;
       padding: 0 20px;
+    }
+    .hero-logo {
+      width: 84px;
+      height: 84px;
+      object-fit: contain;
+      background: #FFFFFF;
+      padding: 10px;
+      border-radius: 20px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+      margin: 0 auto 14px;
+      display: block;
     }
     .badge-top {
       display: inline-block;
@@ -116,8 +129,6 @@
       font-size: 22px;
       margin-bottom: 14px;
     }
-
-    /* --- Carrousel / Slide latéral --- */
     .slider-section { margin-bottom: 34px; }
     .slider-hint {
       font-size: 13px;
@@ -222,8 +233,6 @@
       background: var(--teal);
       transform: scale(1.25);
     }
-
-    /* --- Lightbox zoom plein écran --- */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -254,8 +263,6 @@
       font-size: 24px;
       cursor: pointer;
     }
-
-    /* --- Grille fonctionnalités 2x2 --- */
     .grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -330,6 +337,7 @@
 
   <header>
     <div class="container">
+      <img class="hero-logo" src="Logo_Annafis.png" alt="Logo Annafis">
       <div class="badge-top">Windows 10 / 11 (64-bit) • 100 % Hors-ligne • Gratuit</div>
       <h1>ANNAFIS v2.0</h1>
       <p class="subtitle">
