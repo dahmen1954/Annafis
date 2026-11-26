@@ -19,7 +19,18 @@ Logiciel **100 % gratuit**, **100 % hors-ligne** (aucun cloud externe, strict re
 `46F7822D4DC09F1CEEFEC81C023E70E9E593C6A3A9BB9C468651F19FAA0ACAD2`
 
 ---
-
+## Aperçu du logiciel
+<img width="1920" height="1200" alt="Aide memoire age osseux" src="https://github.com/user-attachments/assets/f43c1fe2-a90b-4722-8411-a932384d3e00" />
+<img width="1920" height="1200" alt="A Propos" src="https://github.com/user-attachments/assets/72fd0380-bee7-4163-bf48-818e2d6e38d3" />
+<img width="1920" height="1200" alt="Module médicaments" src="https://github.com/user-attachments/assets/29fdc694-e053-4d5c-9ecc-f7ad042a5c50" />
+<img width="1920" height="1200" alt="Module agenda_salle d_attente messagerie interne" src="https://github.com/user-attachments/assets/fcc2f1fe-af74-47a5-bd8a-cb54293ff7aa" />
+<img width="1920" height="1200" alt="Dossier médical" src="https://github.com/user-attachments/assets/d0d332a8-f441-440a-9171-c17a2a2e4638" />
+<img width="1920" height="1200" alt="Module caisse" src="https://github.com/user-attachments/assets/8fc1660a-a819-438c-9038-0ea9777f58b5" />
+<img width="1920" height="1200" alt="Module documents" src="https://github.com/user-attachments/assets/c95d82fb-0834-4487-8b29-65668bf02649" />
+<img width="1920" height="1200" alt="Module parametres" src="https://github.com/user-attachments/assets/d14d9343-2332-4163-9438-223ad949ac0f" />
+<img width="1920" height="1200" alt="Module Patients" src="https://github.com/user-attachments/assets/acbc23d0-89fd-4607-9e44-4868e960a6d2" />
+<img width="1920" height="1200" alt="Module statistiques" src="https://github.com/user-attachments/assets/93b0ede3-e743-4821-ad71-61d7d90a401d" />
+---
 ## Fonctionnalités principales
 * **Dossiers patients & consultations :** antécédents, allergies, constantes, courbes de croissance OMS, historique complet.
 * **Impressions prêtes en A4 et A5 :** ordonnances (et ordonnances vierges), certificats médicaux, bilans et factures.
