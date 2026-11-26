@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annafis v2.0 — Logiciel gratuit de gestion de cabinet médical (Windows)</title>
+  <meta name="description" content="Annafis v2.0 : logiciel gratuit et 100 % hors-ligne de gestion de cabinet médical pour Windows. Dossiers patients, ordonnances A4/A5, agenda partagé, salle d'attente, messagerie et caisse en réseau local 2 postes.">
+  <meta property="og:title" content="Annafis v2.0 — Gestion de Cabinet Médical (Gratuit &amp; Hors-ligne)">
+  <meta property="og:description" content="Conçu par Dr MIMOUN Abderrahmane : dossiers patients, ordonnances A4/A5 et réseau local Médecin / Assistante dans le strict respect du secret médical.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dahmen1954.github.io/Annafis/">
+  <style>
+    :root {
+      --teal: #005A5B;
+      --teal-dark: #004344;
+      --teal-light: #00796B;
+      --mint: #F0FDFA;
+      --mint-border: #B2DFDB;
+      --bg: #F4F6F7;
+      --card: #FFFFFF;
+      --text: #1E293B;
+      --muted: #475569;
+      --border: #E2E8F0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+      color: #FFFFFF;
+      padding: 50px 20px 44px;
+      text-align: center;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .badge-top {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      font-size: 18px;
+      max-width: 680px;
+      margin: 0 auto 22px;
+      opacity: 0.95;
+    }
+    .counter-wrap { margin-bottom: 26px; }
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 24px;
+      border-radius: 8px;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); opacity: 0.95; }
+    .btn-primary {
+      background: #FFFFFF;
+      color: var(--teal);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+      border: 1.5px solid rgba(255, 255, 255, 0.55);
+    }
+    main { padding: 34px 0 48px; }
+    .alert-box {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-left: 5px solid #D97706;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 30px;
+      font-size: 14.5px;
+      color: #78350F;
+    }
+    .alert-box strong { color: #92400E; }
+    .sha-box {
+      margin-top: 8px;
+      font-family: Consolas, monospace;
+      font-size: 12.5px;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 6px 10px;
+      border-radius: 5px;
+      word-break: break-all;
+      color: #1E293B;
+    }
+    h2 {
+      color: var(--teal);
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    /* --- Carrousel / Slide latéral --- */
+    .slider-section { margin-bottom: 34px; }
+    .slider-hint {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .slider-box {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+    }
+    .slider-viewport {
+      overflow: hidden;
+      width: 100%;
+    }
+    .slider-track {
+      display: flex;
+      transition: transform 0.35s ease;
+    }
+    .slide {
+      min-width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #0F172A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-in;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .slider-btn {
+      position: absolute;
+      top: 46%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(0, 90, 91, 0.86);
+      color: #FFFFFF;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+      transition: background 0.15s ease, transform 0.15s ease;
+      z-index: 2;
+    }
+    .slider-btn:hover {
+      background: var(--teal-dark);
+      transform: translateY(-50%) scale(1.06);
+    }
+    .slider-btn.prev { left: 12px; }
+    .slider-btn.next { right: 12px; }
+    .slider-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 18px;
+      background: var(--mint);
+      border-top: 1px solid var(--mint-border);
+    }
+    .slider-caption {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--teal);
+    }
+    .slider-count {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .slider-dots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: #CBD5E1;
+      cursor: pointer;
+      padding: 0;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .dot.active {
+      background: var(--teal);
+      transform: scale(1.25);
+    }
+
+    /* --- Lightbox zoom plein écran --- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 1000;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 88vh;
+      border-radius: 8px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 16px;
+      right: 22px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* --- Grille fonctionnalités 2x2 --- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 680px) {
+      .grid { grid-template-columns: 1fr; }
+      h1 { font-size: 32px; }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+    .card h3 {
+      color: var(--teal);
+      font-size: 16.5px;
+      margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .philo-card {
+      background: var(--mint);
+      border: 1px solid var(--mint-border);
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 24px;
+    }
+    .philo-card h2 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    .philo-card p {
+      font-size: 14.5px;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .contact-links a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+    .contact-links a:hover { text-decoration: underline; }
+    footer {
+      text-align: center;
+      padding: 22px 20px 34px;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: #FFFFFF;
+    }
+    .license-note {
+      color: var(--teal);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="badge-top">Windows 10 / 11 (64-bit) • 100 % Hors-ligne • Gratuit</div>
+      <h1>ANNAFIS v2.0</h1>
+      <p class="subtitle">
+        Logiciel de gestion de cabinet médical pensé pour la rapidité en consultation, la maîtrise totale des données en local et le travail en binôme Médecin / Assistante.
+      </p>
+      <div class="counter-wrap">
+        <img src="https://img.shields.io/github/downloads/dahmen1954/Annafis/total?label=T%C3%A9l%C3%A9chargements&amp;color=004344&amp;style=for-the-badge" alt="Compteur de téléchargements Annafis">
+      </div>
+      <div class="cta-group">
+        <a class="btn btn-primary" href="https://github.com/dahmen1954/Annafis/releases/latest/download/Setup_Annafis_v2.0.exe">
+          Télécharger Annafis v2.0 (.exe)
+        </a>
+        <a class="btn btn-secondary" href="https://github.com/dahmen1954/Annafis/releases/latest/download/How_To_Install.pdf">
+          Guide d'installation réseau (PDF)
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="alert-box">
+      <strong>Information Windows SmartScreen au 1ᵉʳ lancement (normal) :</strong><br>
+      Annafis étant un logiciel indépendant gratuit (sans certificat payant), Windows peut afficher <em>« Windows a protégé votre ordinateur »</em>. Cliquez simplement sur <strong>Informations complémentaires</strong> → <strong>Exécuter quand même</strong>.
+      <div class="sha-box">
+        Empreinte officielle SHA-256 : 46F7822D4DC09F1CEEFEC81C023E70E9E593C6A3A9BB9C468651F19FAA0ACAD2
+      </div>
+    </div>
+
+    <section class="slider-section">
+      <h2>Aperçu du logiciel</h2>
+      <p class="slider-hint">Faites défiler avec les flèches (ou glissez sur mobile) • Cliquez sur une image pour l'agrandir.</p>
+      <div class="slider-box">
+        <button class="slider-btn prev" type="button" aria-label="Image précédente" onclick="changerSlide(-1)">&#8249;</button>
+        <button class="slider-btn next" type="button" aria-label="Image suivante" onclick="changerSlide(1)">&#8250;</button>
+
+        <div class="slider-viewport" id="sliderViewport">
+          <div class="slider-track" id="sliderTrack">
+            <div class="slide" data-title="Dossier médical &amp; Consultation">
+              <img src="https://github.com/user-attachments/assets/d0d332a8-f441-440a-9171-c17a2a2e4638" alt="Dossier médical">
+            </div>
+            <div class="slide" data-title="Agenda, Salle d'attente &amp; Messagerie interne">
+              <img src="https://github.com/user-attachments/assets/fcc2f1fe-af74-47a5-bd8a-cb54293ff7aa" alt="Module agenda, salle d'attente et messagerie interne" loading="lazy">
+            </div>
+            <div class="slide" data-title="Gestion des Patients">
+              <img src="https://github.com/user-attachments/assets/acbc23d0-89fd-4607-9e44-4868e960a6d2" alt="Module Patients" loading="lazy">
+            </div>
+            <div class="slide" data-title="Documents médicaux (Ordonnances, Certificats, Bilans)">
+              <img src="https://github.com/user-attachments/assets/c95d82fb-0834-4487-8b29-65668bf02649" alt="Module documents" loading="lazy">
+            </div>
+            <div class="slide" data-title="Base Médicaments">
+              <img src="https://github.com/user-attachments/assets/29fdc694-e053-4d5c-9ecc-f7ad042a5c50" alt="Module médicaments" loading="lazy">
+            </div>
+            <div class="slide" data-title="Module Caisse &amp; Facturation">
+              <img src="https://github.com/user-attachments/assets/8fc1660a-a819-438c-9038-0ea9777f58b5" alt="Module caisse" loading="lazy">
+            </div>
+            <div class="slide" data-title="Statistiques du cabinet">
+              <img src="https://github.com/user-attachments/assets/93b0ede3-e743-4821-ad71-61d7d90a401d" alt="Module statistiques" loading="lazy">
+            </div>
+            <div class="slide" data-title="Aide-mémoire Âge osseux">
+              <img src="https://github.com/user-attachments/assets/f43c1fe2-a90b-4722-8411-a932384d3e00" alt="Aide-mémoire âge osseux" loading="lazy">
+            </div>
+            <div class="slide" data-title="Paramètres &amp; Droits d'accès">
+              <img src="https://github.com/user-attachments/assets/d14d9343-2332-4163-9438-223ad949ac0f" alt="Module paramètres" loading="lazy">
+            </div>
+            <div class="slide" data-title="À propos d'Annafis">
+              <img src="https://github.com/user-attachments/assets/72fd0380-bee7-4163-bf48-818e2d6e38d3" alt="À propos" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-footer">
+          <div class="slider-caption" id="sliderCaption">Dossier médical &amp; Consultation</div>
+          <div class="slider-count" id="sliderCount">1 / 10</div>
+        </div>
+      </div>
+
+      <div class="slider-dots" id="sliderDots"></div>
+    </section>
+
+    <h2>Fonctionnalités principales</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Dossiers &amp; Consultations</h3>
+        <p>Antécédents, allergies, constantes vitales, courbes de croissance OMS, historique complet des consultations et exportation sécurisée.</p>
+      </div>
+      <div class="card">
+        <h3>Impressions A4 &amp; A5 prêtes</h3>
+        <p>Ordonnances (et ordonnances vierges), certificats médicaux, bilans et factures avec en-tête et logo du praticien.</p>
+      </div>
+      <div class="card">
+        <h3>Réseau local 2 postes</h3>
+        <p><strong>PC Médecin (Serveur)</strong> + <strong>PC Assistante (Client)</strong> : agenda partagé, salle d'attente en direct, messagerie interne et caisse contrôlée.</p>
+      </div>
+      <div class="card">
+        <h3>Secret médical garanti</h3>
+        <p>100 % hors-ligne sur votre réseau local (base SQLite privée, aucun serveur externe). Le poste Assistante n'accède qu'à l'état-civil, jamais aux données cliniques.</p>
+      </div>
+    </div>
+
+    <div class="philo-card">
+      <h2>Réalisation et philosophie</h2>
+      <p>
+        Conçu et réalisé par <strong>Dr MIMOUN Abderrahmane</strong> à partir de la pratique quotidienne au cabinet, afin d'offrir aux confrères un outil rapide, fiable, autonome et respectueux du secret médical.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:mimdahmen@gmail.com?subject=Annafis%20v2.0">E-mail : mimdahmen@gmail.com</a>
+        <a href="https://wa.me/213780104408" target="_blank" rel="noopener">WhatsApp : +213 780 10 44 08</a>
+        <a href="https://github.com/dahmen1954/Annafis/releases" target="_blank" rel="noopener">Page des versions GitHub</a>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="lightbox" id="lightbox" onclick="fermerZoom()">
+    <button class="lightbox-close" type="button" aria-label="Fermer">&times;</button>
+    <img id="lightboxImg" src="" alt="Aperçu agrandi">
+  </div>
+
+  <footer>
+    <div>© 2026 Dr MIMOUN Abderrahmane — Tous droits réservés.</div>
+    <div class="license-note">Logiciel gratuit à usage médical — Toute modification, décompilation ou vente commerciale est interdite.</div>
+  </footer>
+
+  <script>
+    const track = document.getElementById('sliderTrack');
+    const slides = Array.from(track.children);
+    const caption = document.getElementById('sliderCaption');
+    const count = document.getElementById('sliderCount');
+    const dotsContainer = document.getElementById('sliderDots');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    let index = 0;
+
+    slides.forEach((_, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'dot' + (i === 0 ? ' active' : '');
+      btn.setAttribute('aria-label', 'Capture ' + (i + 1));
+      btn.onclick = () => allerASlide(i);
+      dotsContainer.appendChild(btn);
+    });
+
+    const dots = Array.from(dotsContainer.children);
+
+    function allerASlide(i) {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      caption.textContent = slides[index].dataset.title;
+      count.textContent = (index + 1) + ' / ' + slides.length;
+      dots.forEach((d, k) => d.classList.toggle('active', k === index));
+    }
+
+    function changerSlide(delta) {
+      allerASlide(index + delta);
+    }
+
+    slides.forEach((slide) => {
+      slide.addEventListener('click', () => {
+        const img = slide.querySelector('img');
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('open');
+      });
+    });
+
+    function fermerZoom() {
+      lightbox.classList.remove('open');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') fermerZoom();
+      if (e.key === 'ArrowLeft') changerSlide(-1);
+      if (e.key === 'ArrowRight') changerSlide(1);
+    });
+
+    let startX = 0;
+    const viewport = document.getElementById('sliderViewport');
+    viewport.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+    viewport.addEventListener('touchend', (e) => {
+      const diff = e.changedTouches[0].clientX - startX;
+      if (Math.abs(diff) > 40) changerSlide(diff < 0 ? 1 : -1);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
