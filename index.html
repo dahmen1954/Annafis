@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Annafis v2.0 — Logiciel gratuit de gestion de cabinet médical (Windows)</title>
-  <meta name="description" content="Annafis v2.0 : logiciel gratuit et 100 % hors-ligne de gestion de cabinet médical pour Windows. Dossiers patients, ordonnances A4/A5, agenda partagé, salle d'attente, messagerie et caisse en réseau local 2 postes.">
-  <meta property="og:title" content="Annafis v2.0 — Gestion de Cabinet Médical (Gratuit &amp; Hors-ligne)">
+  <title>Annafis v2.0.1 — Logiciel gratuit de gestion de cabinet médical (Windows)</title>
+  <meta name="description" content="Annafis v2.0.1 : logiciel gratuit et 100 % hors-ligne de gestion de cabinet médical pour Windows. Dossiers patients, ordonnances A4/A5, agenda partagé, salle d'attente, messagerie et caisse en réseau local 2 postes.">
+  <meta property="og:title" content="Annafis v2.0.1 — Gestion de Cabinet Médical (Gratuit &amp; Hors-ligne)">
   <meta property="og:description" content="Conçu par Dr MIMOUN Abderrahmane : dossiers patients, ordonnances A4/A5 et réseau local Médecin / Assistante dans le strict respect du secret médical.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dahmen1954.github.io/Annafis/">
@@ -267,7 +267,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
     @media (max-width: 680px) {
       .grid { grid-template-columns: 1fr; }
@@ -289,6 +289,48 @@
       font-size: 14px;
       color: var(--muted);
     }
+
+    /* --- Changelog --- */
+    .changelog-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+    .version-item + .version-item {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .version-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .version-tag {
+      font-weight: 700;
+      font-size: 15.5px;
+      color: var(--teal);
+    }
+    .version-badge {
+      background: var(--mint);
+      color: var(--teal);
+      border: 1px solid var(--mint-border);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .version-list {
+      padding-left: 18px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .version-list li + li { margin-top: 4px; }
+
     .philo-card {
       background: var(--mint);
       border: 1px solid var(--mint-border);
@@ -339,7 +381,7 @@
     <div class="container">
       <img class="hero-logo" src="Logo_Annafis.png" alt="Logo Annafis">
       <div class="badge-top">Windows 10 / 11 (64-bit) • 100 % Hors-ligne • Gratuit</div>
-      <h1>ANNAFIS v2.0</h1>
+      <h1>ANNAFIS v2.0.1</h1>
       <p class="subtitle">
         Logiciel de gestion de cabinet médical pensé pour la rapidité en consultation, la maîtrise totale des données en local et le travail en binôme Médecin / Assistante.
       </p>
@@ -347,8 +389,8 @@
         <img src="https://img.shields.io/github/downloads/dahmen1954/Annafis/total?label=T%C3%A9l%C3%A9chargements&amp;color=004344&amp;style=for-the-badge" alt="Compteur de téléchargements Annafis">
       </div>
       <div class="cta-group">
-        <a class="btn btn-primary" href="https://github.com/dahmen1954/Annafis/releases/latest/download/Setup_Annafis_v2.0.exe">
-          Télécharger Annafis v2.0 (.exe)
+        <a class="btn btn-primary" href="https://github.com/dahmen1954/Annafis/releases/latest/download/Setup_Annafis_v2.0.1.exe">
+          Télécharger Annafis v2.0.1 (.exe)
         </a>
         <a class="btn btn-secondary" href="https://github.com/dahmen1954/Annafis/releases/latest/download/How_To_Install.pdf">
           Guide d'installation réseau (PDF)
@@ -366,7 +408,7 @@
       <strong>Information Windows SmartScreen au 1ᵉʳ lancement (normal) :</strong><br>
       Annafis étant un logiciel indépendant gratuit (sans certificat payant), Windows peut afficher <em>« Windows a protégé votre ordinateur »</em>. Cliquez simplement sur <strong>Informations complémentaires</strong> → <strong>Exécuter quand même</strong>.
       <div class="sha-box">
-        Empreinte officielle SHA-256 : 46F7822D4DC09F1CEEFEC81C023E70E9E593C6A3A9BB9C468651F19FAA0ACAD2
+        Empreinte officielle SHA-256 (v2.0.1) : BDAB15969642507E023AD40C10E33B8FC0A5CEB6B3C22B124E5C9F542D21D4D8
       </div>
     </div>
 
@@ -441,13 +483,36 @@
       </div>
     </div>
 
+    <h2>Historique des versions (Changelog)</h2>
+    <div class="changelog-card">
+      <div class="version-item">
+        <div class="version-header">
+          <span class="version-tag">Version 2.0.1</span>
+          <span class="version-badge">Actuelle</span>
+        </div>
+        <ul class="version-list">
+          <li><strong>Statistiques :</strong> correction du compteur d'ordonnances (prise en compte des prescriptions structurées).</li>
+          <li><strong>À propos :</strong> ajout du bouton <em>« Vérifier les mises à jour »</em> (vérification manuelle au clic uniquement — le logiciel reste 100 % hors-ligne).</li>
+          <li><strong>Mise à jour transparente :</strong> installation directe par-dessus la v2.0 sans perte de données ni doublon.</li>
+        </ul>
+      </div>
+      <div class="version-item">
+        <div class="version-header">
+          <span class="version-tag">Version 2.0</span>
+        </div>
+        <ul class="version-list">
+          <li>Mode Réseau local 2 postes (PC Médecin Serveur + PC Assistante Client), caisse contrôlée, impressions A4/A5 calibrées, licence d'utilisation et guide PDF intégré.</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="philo-card">
       <h2>Réalisation et philosophie</h2>
       <p>
         Conçu et réalisé par <strong>Dr MIMOUN Abderrahmane</strong> à partir de la pratique quotidienne au cabinet, afin d'offrir aux confrères un outil rapide, fiable, autonome et respectueux du secret médical.
       </p>
       <div class="contact-links">
-        <a href="mailto:mimdahmen@gmail.com?subject=Annafis%20v2.0">E-mail : mimdahmen@gmail.com</a>
+        <a href="mailto:mimdahmen@gmail.com?subject=Annafis%20v2.0.1">E-mail : mimdahmen@gmail.com</a>
         <a href="https://wa.me/213780104408" target="_blank" rel="noopener">WhatsApp : +213 780 10 44 08</a>
         <a href="https://github.com/dahmen1954/Annafis/releases" target="_blank" rel="noopener">Page des versions GitHub</a>
       </div>
