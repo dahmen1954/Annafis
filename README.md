@@ -20,7 +20,7 @@ Logiciel **100 % gratuit**, **100 % hors-ligne** (aucun cloud externe, strict re
 > Cliquez simplement sur **Informations complémentaires** → **Exécuter quand même**.
 
 **Empreinte d'authenticité SHA-256 (v2.0.1) :**  
-`BDAB15969642507E023AD40C10E33B8FC0A5CEB6B3C22B124E5C9F542D21D4D8`
+7AB1584BE4351BA01CCD3356AEEB5F5E9519E85D847F8C9CD61D6F8A431911BA
 
 ---
 
